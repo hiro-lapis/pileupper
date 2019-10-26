@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* ==========================================================================
+Image-drop-area
+========================================================================== */
+.p-img-drop{
+    &-area{
+        position: relative;
+        height: 50vw;
+        width: 50vw;
+        border-radius: 5vw;
+        margin: 10px auto;
+        overflow: hidden;
+        background-color: $color_black4;
+        @include pc(){
+        width: 450px;
+        height: 450px;
+        }
+    }
+    &__input{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &__img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__icon{
+        position: relative;
+        top: 41%;
+    }
+}

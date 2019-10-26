@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* ==========================================================================
+Modal
+========================================================================== */
+.p-modal{
+    border-radius: 20px;
+    display: none;
+    position: absolute;
+    //暗い背景
+
+    &__bg{
+        @extend .p-modal;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: $color_black3;
+        z-index: 2;
+    }
+
+    //モーダル本体
+    &__container{
+        @extend .p-modal;
+        background: $color_main;
+        top: 30%;
+        left: 25%;
+        width: 50vw;
+        height: 25vh;
+        z-index: 3;
+    }
+
+
+    &__head{
+        margin: 15% auto;
+    }
+
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 5vh auto;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* ==========================================================================
+ State
+========================================================================== */
+.is-hide{
+    display: none;
+}
+.is-error{
+    background-color: $bg-slide-msg_fail;
+}
+.is-seccess{
+    background-color: $bg-slide-msg_suc;
+}

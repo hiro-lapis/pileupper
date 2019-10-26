@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* ==========================================================================
+ Base
+========================================================================== */
+html, body {
+    width: 100%;
+    color: $font-color_default;
+    font-size: $font-size_default;
+	box-sizing: border-box;
+    background-color: $color_main;//本プロジェクト専用
+    font-family: $font-type_default;
+    text-size-adjust: 100%;
+}
+
+html {
+    /* ルートのフォントサイズを10pxに設定しておく */
+	font-size: 62.5%;
+}
+
+body {
+	/* ルートのフォントサイズを1.6em（16pxと同等のサイズ）に設定 */
+	font-size: $font-size_default;
+}
+
+div h2{
+	font-size: $font-size_4l;
+}
+
+a{
+    color: $font-color_default;
+    text-decoration: none;
+}
+
+img{
+	vertical-align: bottom;
+	width: 100%;
+}
+
+
+li{
+  list-style: none;
+}
+
+input,
+textarea,
+select{
+    font-size: 1.5rem;
+}

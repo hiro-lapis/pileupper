@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* ==========================================================================
+Image-drop-area
+========================================================================== */
+.p-label{
+    &--profedit__img{
+        position: relative;
+        margin: 20px auto;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 72px;
+        height: 72px;
+    }
+}

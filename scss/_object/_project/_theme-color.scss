@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* ==========================================================================
+Theme color
+========================================================================== */
+.p-bg-main-color{
+    background-color: $color_main;
+}
+
+.p-bg-sub-color{
+  background-color: $color_sub;
+}
+
+.p-border--sub-theme{
+    border-color: $color_sub;
+}

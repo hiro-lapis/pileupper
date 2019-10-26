@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* ==========================================================================
+Input
+========================================================================== */
+.c-input{
+    box-sizing: border-box;
+    padding: 1vh 3vw;
+    border-style: none;
+    border-radius: 8px;
+    @include pc(){
+        padding: 1vh 20px;
+    }
+    &:focus{
+        // border-style: none;
+        outline: none;
+    }
+}

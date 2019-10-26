@@ -1,0 +1,146 @@
+@charset "utf-8";
+/* ==========================================================================
+Forms(Input,textarea)
+========================================================================== */
+.p-form{
+    font-size: 1.5rem;
+    width: 100%;
+    height: 40vh;
+    @include pc(){
+        width: 600px;
+    }
+    &--large{
+        @extend .p-form;
+        height: 50vh;
+    }
+    &--middle{
+        @extend .p-form;
+        height: 30vh;
+    }
+
+    &--small{
+        @extend .p-form;
+        height: 15vh;
+    }
+    &--signup,
+    &--login,
+    &--pass-remind,
+    &--pass-receive{
+        @extend .p-form;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 10vh;
+        @include pc(){
+            margin-bottom: -10vh;
+        }
+        &__body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 70%;
+        }
+        &__bottom{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            @include pc(){
+                height: 200px;
+            }
+            }
+        }
+
+
+
+    &--search{
+        @extend .p-form;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 200px;
+        height: 200px;
+        background-color: #f0f8ff;
+        border-radius: 20px;
+    }
+
+
+    &--message{
+        @extend .p-form;
+        height: 28vh;
+        background: $color_white3;
+        border-radius: 20px;
+        &__body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        &__footer{
+            display: flex;
+            justify-content:flex-end;
+            text-align: right;
+        }
+    }
+
+//p-form・・・
+    &--profedit{
+        display: flex;
+        flex-direction: column;
+        &__head{
+        @extend .p-form--profedit;
+        text-align: center;
+    }
+        &__body{
+        @extend .p-form--profedit;
+        height: 30vh;
+        justify-content: space-between;
+        @include pc(){
+        height: 40vh;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: space-between;
+        }
+    }
+        &__bottom{
+        @extend .p-form--profedit;
+        align-items: center;
+        @include pc(){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        }
+        }
+}
+
+
+}
+
+//makerecord.php
+.p-form--record{
+    margin-bottom: 5vh;
+    &__head,
+    &__body,
+    &__bottom{
+        margin-bottom: 3vh;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    &__body{
+        padding: 3vh 0;
+        border-radius: 20px;
+        background: $color_sub_light3;
+    }
+}
+
+.p-form{
+    &-img{
+        z-index: 1;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

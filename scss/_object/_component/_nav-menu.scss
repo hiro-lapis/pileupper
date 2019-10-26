@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* ==========================================================================
+Navigation-menu
+========================================================================== */
+.c-nav__menu{
+  width: 70vw;
+  height: 65vh;
+  @include pc(){
+  width: 40vw;
+  }
+  &__bg{
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: 9;
+      width: 100vw;
+      height: 100vh;
+      &.active{
+          transform: translateX(-100%);
+          transition: .5s;
+      }
+  }
+
+
+  &__slide{
+    display: flex;
+    align-items: center;
+    width: 85vw;
+    height: 100vh;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    transition: .5s;
+    background-color: #f0f8ff;
+    @include pc(){
+    width: 70vw;
+    }
+    &.active{
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: .5s;
+    text-align: center;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* ==========================================================================
+is-active
+========================================================================== */
+//いいねボタンactive時
+.is-active{
+    color:  $strong;
+}
+.is-float{
+    transition: all .5s;
+    position: fixed;
+    background-color: $color_sub_light3;
+}

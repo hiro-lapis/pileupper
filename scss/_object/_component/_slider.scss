@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* ==========================================================================
+Side-bar
+========================================================================== */
+.p-side-bar{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    text-align: center;
+    transform: rotate(-90deg);
+    transform-origin: right top;
+    transition: all .5s;
+    border-radius: 20px;
+    &.is-active{
+    transform-origin: right top;
+    transform: rotate(0deg);
+    opacity: 1;
+    transition: all .5s;
+    }
+}

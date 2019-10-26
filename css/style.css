@@ -1,0 +1,1653 @@
+@charset "UTF-8";
+/* ==========================================================================
+ Foundation
+========================================================================== */
+/* ==========================================================================
+Animation
+========================================================================== */
+@-webkit-keyframes favMoveAnimation {
+  0% {
+    opacity: 0;
+    transform: rotateY(0) translateY(0);
+  }
+  10% {
+    transform: rotateY(20deg);
+  }
+  20% {
+    transform: rotateY(35deg);
+  }
+  30% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  40% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  50% {
+    opacity: .5;
+    transform: rotateY(45deg) translateY(-3px);
+  }
+  60% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  70% {
+    transform: rotateY(35deg) translateY(4px);
+  }
+  80% {
+    transform: rotateY(30deg) translateY(4px);
+  }
+  90% {
+    transform: rotateY(25deg) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+@keyframes favMoveAnimation {
+  0% {
+    opacity: 0;
+    transform: rotateY(0) translateY(0);
+  }
+  10% {
+    transform: rotateY(20deg);
+  }
+  20% {
+    transform: rotateY(35deg);
+  }
+  30% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  40% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  50% {
+    opacity: .5;
+    transform: rotateY(45deg) translateY(-3px);
+  }
+  60% {
+    transform: rotateY(35deg) translateY(-3px);
+  }
+  70% {
+    transform: rotateY(35deg) translateY(4px);
+  }
+  80% {
+    transform: rotateY(30deg) translateY(4px);
+  }
+  90% {
+    transform: rotateY(25deg) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+
+/* ==========================================================================
+ Base
+========================================================================== */
+html, body {
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background-color: #fcfdfe;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.54);
+  font-family: "Kosugi Maru", sans-serif;
+  font-size: 1.6rem;
+  text-size-adjust: 100%;
+  width: 100%;
+}
+
+html {
+  /* ルートのフォントサイズを10pxに設定しておく */
+  font-size: 62.5%;
+}
+
+body {
+  /* ルートのフォントサイズを1.6em（16pxと同等のサイズ）に設定 */
+  font-size: 1.6rem;
+}
+
+div h2 {
+  font-size: 4rem;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.54);
+  text-decoration: none;
+}
+
+img {
+  vertical-align: bottom;
+  width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+input,
+textarea,
+select {
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+ Layout
+========================================================================== */
+/* ==========================================================================
+ Footer
+========================================================================== */
+.l-footer {
+  background-color: rgba(0, 141, 203, 0.7);
+  margin: 0 auto;
+  padding-bottom: 1.5vh;
+  padding-top: 1.5vh;
+  text-align: center;
+  width: 100vw;
+}
+
+/* ==========================================================================
+ Header
+========================================================================== */
+.l-header {
+  height: 11vh;
+  margin-bottom: 5vh;
+  width: 100vw;
+}
+
+/* ==========================================================================
+ Main
+========================================================================== */
+/* ==========================================================================
+ Nav
+========================================================================== */
+/* ==========================================================================
+ Object
+========================================================================== */
+/* -----------------------------------------------------------------
+ Component
+----------------------------------------------------------------- */
+/* ==========================================================================
+Button (width/height、font-size/color、shadow)
+========================================================================== */
+.c-btn, .c-btn--sm, .c-btn--md, .c-btn--large, .c-btn--wide {
+  align-items: center;
+  border-radius: 20px;
+  border-style: none;
+  box-shadow: 0 3px 3px #8b98a2;
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  justify-content: center;
+  pointer: cursor;
+  transition: .3s;
+}
+
+.c-btn:hover, .c-btn--sm:hover, .c-btn--md:hover, .c-btn--large:hover, .c-btn--wide:hover {
+  box-shadow: 0 5px 5px 0 #8b98a2;
+  transform: translateY(-3px);
+  transition: .3s;
+}
+
+.c-btn--sm {
+  height: 25px;
+  width: 50px;
+}
+
+.c-btn--md {
+  height: 50px;
+  width: 100px;
+}
+
+.c-btn--large {
+  height: 50px;
+  width: 200px;
+}
+
+.c-btn--wide {
+  font-size: 2rem;
+  padding: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  .c-btn--wide {
+    width: 65%;
+  }
+}
+
+.c-btn--circle {
+  border-radius: 50%;
+}
+
+.c-btn--center {
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+Card
+========================================================================== */
+/* ==========================================================================
+Container
+========================================================================== */
+.c-container {
+  display: flex;
+  justify-content: center;
+  line-height: 1.5;
+  width: 100vw;
+}
+
+.c-container--header {
+  align-items: center;
+  transition: all .5s;
+  width: 100%;
+}
+
+.c-container--sm {
+  margin: 0 auto;
+  width: 60vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-container--sm {
+    margin: 0 auto;
+    width: 40vw;
+  }
+}
+
+.c-container--md {
+  margin: 0 auto;
+  width: 80vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-container--md {
+    margin: 0 auto;
+    width: 980px;
+  }
+}
+
+.c-container--lg {
+  margin: 0 auto;
+  width: 90vw;
+}
+
+.c-container__top {
+  margin: 5vh 0;
+}
+
+.c-container__body {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.c-container__body--pass-remind {
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+@media screen and (min-width: 980px) {
+  .c-container__body--pass-remind {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    height: 25vh;
+    justify-content: space-between;
+    line-height: 1.7;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+/* ==========================================================================
+drawer-icon
+========================================================================== */
+.c-drawer {
+  position: relative;
+}
+
+.c-drawer__checkbox {
+  display: none;
+}
+
+.c-drawer__icon {
+  cursor: pointer;
+  display: block;
+  height: 70px;
+  position: fixed;
+  right: 0;
+  width: 66px;
+}
+
+.c-drawer__icon-parts, .c-drawer__icon-parts:before, .c-drawer__icon-parts:after {
+  background-color: rgba(0, 0, 0, 0.87);
+  bottom: 0;
+  display: block;
+  height: 3px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+}
+
+.c-drawer__icon-parts:before, .c-drawer__icon-parts:after {
+  content: " ";
+}
+
+.c-drawer__icon-parts:before {
+  top: 16px;
+}
+
+.c-drawer__icon-parts:after {
+  top: -16px;
+}
+
+.c-drawer__overlay {
+  background: #000;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.c-drawer__menu {
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  color: #000;
+  height: 100vh;
+  max-width: 100%;
+  overflow-y: auto;
+  position: fixed;
+  right: -320px;
+  top: 0;
+  width: 320px;
+}
+
+.c-drawer__icon {
+  z-index: 4;
+}
+
+.c-drawer__menu {
+  z-index: 3;
+}
+
+.c-drawer__overlay {
+  z-index: 2;
+}
+
+.c-drawer__checkbox:checked ~ .c-drawer__icon .c-drawer__icon-parts {
+  background: transparent;
+}
+
+.c-drawer__checkbox:checked ~ .c-drawer__icon .c-drawer__icon-parts:before {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.c-drawer__checkbox:checked ~ .c-drawer__icon .c-drawer__icon-parts:after {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.c-drawer__checkbox:checked ~ .c-drawer__overlay {
+  opacity: 0.3;
+  pointer-events: auto;
+}
+
+.c-drawer__checkbox:checked ~ .c-drawer__menu {
+  right: 0;
+}
+
+.c-drawer__icon-parts, .c-drawer__icon-parts:after, .c-drawer__icon-parts:before, .c-drawer__overlay, .c-drawer__menu {
+  transition: all .7s;
+}
+
+/* ==========================================================================
+Forms
+========================================================================== */
+.c-form, .c-form__text-area {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.c-form__text-area {
+  border-style: none;
+  box-sizing: border-box;
+}
+
+.c-form__link {
+  cursor: pointer;
+}
+
+.c-form__link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+Input
+========================================================================== */
+.c-input {
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  padding: 1vh 3vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-input {
+    padding: 1vh 20px;
+  }
+}
+
+.c-input:focus {
+  outline: none;
+}
+
+/* ==========================================================================
+List
+========================================================================== */
+.c-menu-trigger {
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  height: 23px;
+  position: fixed;
+  right: 4vh;
+  top: 4vh;
+  width: 40px;
+  z-index: 12;
+}
+
+.c-menu-trigger span {
+  background-color: rgba(0, 0, 0, 0.54);
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 4px;
+  left: 0;
+  position: absolute;
+  transition: all .4s;
+  width: 100%;
+}
+
+.c-menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+
+.c-menu-trigger span:nth-of-type(2) {
+  top: 10px;
+}
+
+.c-menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+.c-menu-trigger.active span:nth-of-type(1) {
+  transform: translateY(10px) rotate(-45deg);
+}
+
+.c-menu-trigger.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.c-menu-trigger.active span:nth-of-type(3) {
+  transform: translateY(-8px) rotate(45deg);
+}
+
+.c-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.c-menu__item {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin: 3vh;
+}
+
+.c-menu__item-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ==========================================================================
+Error-message
+========================================================================== */
+.c-msg__err {
+  color: rgba(215, 65, 47, 0.8);
+}
+
+/* ==========================================================================
+Navigation-menu
+========================================================================== */
+.c-nav__menu {
+  height: 65vh;
+  width: 70vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-nav__menu {
+    width: 40vw;
+  }
+}
+
+.c-nav__menu__bg {
+  height: 100vh;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 100vw;
+  z-index: 9;
+}
+
+.c-nav__menu__bg.active {
+  transform: translateX(-100%);
+  transition: .5s;
+}
+
+.c-nav__menu__slide {
+  align-items: center;
+  background-color: #f0f8ff;
+  display: flex;
+  height: 100vh;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  transition: .5s;
+  width: 85vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-nav__menu__slide {
+    width: 70vw;
+  }
+}
+
+.c-nav__menu__slide.active {
+  text-align: center;
+  transform: translateX(-100%);
+  transition: .5s;
+  z-index: 10;
+}
+
+/* ==========================================================================
+Navigation
+========================================================================== */
+/* ==========================================================================
+ Panel
+========================================================================== */
+.c-panel {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+Site-logo
+========================================================================== */
+.c-site-logo {
+  height: 8vh;
+  line-height: 8vh;
+  padding: 1.5vh;
+  text-align: left;
+  width: 50vw;
+}
+
+@media screen and (min-width: 980px) {
+  .c-site-logo {
+    padding-bottom: 1.5vh;
+    padding-left: 6vw;
+    padding-right: 0;
+    padding-top: 1.5vh;
+  }
+}
+
+.c-site-logo__title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 980px) {
+  .c-site-logo__title {
+    font-size: 4rem;
+  }
+}
+
+/* ==========================================================================
+Side-bar
+========================================================================== */
+.p-side-bar {
+  border-radius: 20px;
+  bottom: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  transform: rotate(-90deg);
+  transform-origin: right top;
+  transition: all .5s;
+}
+
+.p-side-bar.is-active {
+  opacity: 1;
+  transform: rotate(0deg);
+  transform-origin: right top;
+  transition: all .5s;
+}
+
+.c-thumbnailCover {
+  background: rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all .5s;
+}
+
+.c-thumbnailCover:hover {
+  opacity: 1;
+  transition: all .5s;
+}
+
+.c-thumbnailCover__icon {
+  color: white;
+  font-size: 4rem;
+  left: 45%;
+  position: absolute;
+  top: 45%;
+}
+
+/* ==========================================================================
+Title
+========================================================================== */
+.c-title, .c-title--sm {
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.c-title--sm {
+  font-size: 2rem;
+}
+
+/* -----------------------------------------------------------------
+ Project
+----------------------------------------------------------------- */
+/* ==========================================================================
+ float
+========================================================================== */
+.p-bg-circle {
+  border-radius: 50%;
+  padding: 3% 6%;
+}
+
+/* ==========================================================================
+Button (background-color,hover-animetion)*サイズ・形状はcomponentで管理
+========================================================================== */
+.p-btn--msg, .p-btn--submit {
+  background-color: #4caf50;
+}
+
+.p-btn--prof-edit, .p-btn--search-start {
+  background-color: #0277bd;
+}
+
+.p-btn--withdraw {
+  background-color: #a0a0a0;
+}
+
+.p-btn--search {
+  background: rgba(0, 0, 0, 0.12);
+  bottom: 200px;
+  padding: 15px;
+  position: fixed;
+  right: 0%;
+}
+
+@media screen and (min-width: 980px) {
+  .p-btn--search {
+    right: 6%;
+  }
+}
+
+.p-btn--search, .p-btn--message {
+  -webkit-animation: favMoveAnimation 1s;
+  animation: favMoveAnimation 1s;
+}
+
+.p-btn--search.is-active:hover, .p-btn--message.is-active:hover {
+  -webkit-animation: favMoveAnimation 1s;
+  animation: favMoveAnimation 1s;
+}
+
+.p-btn--withdraw__wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto;
+  width: 65vw;
+}
+
+@media screen and (min-width: 980px) {
+  .p-btn--withdraw__wrap {
+    margin: 5vh auto;
+    width: 48%;
+  }
+}
+
+/* ==========================================================================
+Font-Awesome Icon
+========================================================================== */
+.far {
+  position: absolute;
+}
+
+@media screen and (min-width: 980px) {
+  .fa-3x {
+    font-size: 5em;
+  }
+}
+
+/* ==========================================================================
+Forms(Input,textarea)
+========================================================================== */
+.p-form, .p-form--large, .p-form--middle, .p-form--small, .p-form--signup, .p-form--login, .p-form--pass-remind, .p-form--pass-receive, .p-form--search, .p-form--message {
+  font-size: 1.5rem;
+  height: 40vh;
+  width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  .p-form, .p-form--large, .p-form--middle, .p-form--small, .p-form--signup, .p-form--login, .p-form--pass-remind, .p-form--pass-receive, .p-form--search, .p-form--message {
+    width: 600px;
+  }
+}
+
+.p-form--large {
+  height: 50vh;
+}
+
+.p-form--middle {
+  height: 30vh;
+}
+
+.p-form--small {
+  height: 15vh;
+}
+
+.p-form--signup, .p-form--login, .p-form--pass-remind, .p-form--pass-receive {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 10vh;
+}
+
+@media screen and (min-width: 980px) {
+  .p-form--signup, .p-form--login, .p-form--pass-remind, .p-form--pass-receive {
+    margin-bottom: -10vh;
+  }
+}
+
+.p-form--signup__body, .p-form--login__body, .p-form--pass-remind__body, .p-form--pass-receive__body {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-around;
+}
+
+.p-form--signup__bottom, .p-form--login__bottom, .p-form--pass-remind__bottom, .p-form--pass-receive__bottom {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+@media screen and (min-width: 980px) {
+  .p-form--signup__bottom, .p-form--login__bottom, .p-form--pass-remind__bottom, .p-form--pass-receive__bottom {
+    height: 200px;
+  }
+}
+
+.p-form--search {
+  background-color: #f0f8ff;
+  border-radius: 20px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-around;
+  position: fixed;
+  right: 0;
+  width: 200px;
+}
+
+.p-form--message {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  height: 28vh;
+}
+
+.p-form--message__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.p-form--message__footer {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.p-form--profedit, .p-form--profedit__head, .p-form--profedit__body, .p-form--profedit__bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.p-form--profedit__head {
+  text-align: center;
+}
+
+.p-form--profedit__body {
+  height: 30vh;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 980px) {
+  .p-form--profedit__body {
+    height: 40vh;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.p-form--profedit__bottom {
+  align-items: center;
+}
+
+@media screen and (min-width: 980px) {
+  .p-form--profedit__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.p-form--record {
+  margin-bottom: 5vh;
+}
+
+.p-form--record__head, .p-form--record__body, .p-form--record__bottom {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3vh;
+  text-align: center;
+}
+
+.p-form--record__body {
+  background: rgba(0, 141, 203, 0.3);
+  border-radius: 20px;
+  padding: 3vh 0;
+}
+
+.p-form-img {
+  height: 100%;
+  opacity: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* ==========================================================================
+Image-drop-area
+========================================================================== */
+.p-img-drop-area {
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 5vw;
+  height: 50vw;
+  margin: 10px auto;
+  overflow: hidden;
+  position: relative;
+  width: 50vw;
+}
+
+@media screen and (min-width: 980px) {
+  .p-img-drop-area {
+    height: 450px;
+    width: 450px;
+  }
+}
+
+.p-img-drop__input {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.p-img-drop__img {
+  -o-object-fit: cover;
+  display: none;
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.p-img-drop__icon {
+  position: relative;
+  top: 41%;
+}
+
+/* ==========================================================================
+Image
+========================================================================== */
+.p-img {
+  width: 100%;
+}
+
+.p-img--circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.p-img--user {
+  -o-object-fit: cover;
+  background-color: rgba(0, 141, 203, 0.4);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.p-img--record {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ==========================================================================
+Input,Textarea
+========================================================================== */
+.p-input, .p-input--search {
+  background: rgba(0, 141, 203, 0.2);
+  border-style: none;
+}
+
+@media screen and (min-width: 980px) {
+  .p-input, .p-input--search {
+    margin: 0 auto;
+    width: 300px;
+  }
+}
+
+.p-input--search {
+  padding: 1vh 3vw;
+}
+
+@media screen and (min-width: 980px) {
+  .p-input--search {
+    width: 80%;
+  }
+}
+
+.p-text-area, .p-text-area--record {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  height: 8vh;
+  padding: 1vh 1.5vw;
+  width: 100%;
+}
+
+.p-text-area--record {
+  width: 400px;
+}
+
+/* ==========================================================================
+Item-list
+========================================================================== */
+.p-item-list__about {
+  margin: 2vh auto;
+  width: 70vw;
+}
+
+/* ==========================================================================
+is-active
+========================================================================== */
+.is-active {
+  color: #ff6633;
+}
+
+.is-float {
+  background-color: rgba(0, 141, 203, 0.3);
+  position: fixed;
+  transition: all .5s;
+}
+
+/* ==========================================================================
+Image-drop-area
+========================================================================== */
+.p-label--profedit__img {
+  border-radius: 50%;
+  height: 72px;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  width: 72px;
+}
+
+/* ==========================================================================
+Message-form
+========================================================================== */
+.p-message__area--outer {
+  background: rgba(0, 141, 203, 0.3);
+  border-radius: 20px;
+  margin-bottom: 6vh;
+  margin-top: -6vh;
+  padding: 3vh 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  .p-message__area--outer {
+    width: 60%;
+  }
+}
+
+.p-message__area--inner {
+  background: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 0 auto 10vh;
+  max-height: 40vh;
+  min-height: 15vh;
+  overflow: scroll;
+  width: 88%;
+}
+
+.p-message {
+  display: flex;
+  flex-direction: row;
+  margin: 2vh auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.p-message__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+}
+
+.p-message__header--icon {
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
+.p-message__header--name {
+  font-size: 1.5rem;
+}
+
+.p-message__body {
+  white-space: pre-wrap;
+  width: 70%;
+}
+
+.p-message__footer {
+  text-align: left;
+  width: 70%;
+}
+
+/* ==========================================================================
+Modal
+========================================================================== */
+.p-modal, .p-modal__bg, .p-modal__container {
+  border-radius: 20px;
+  display: none;
+  position: absolute;
+}
+
+.p-modal__bg {
+  background: rgba(0, 0, 0, 0.26);
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 2;
+}
+
+.p-modal__container {
+  background: #fcfdfe;
+  height: 25vh;
+  left: 25%;
+  top: 30%;
+  width: 50vw;
+  z-index: 3;
+}
+
+.p-modal__head {
+  margin: 15% auto;
+}
+
+.p-modal__body {
+  display: flex;
+  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  margin: 5vh auto;
+}
+
+/* ==========================================================================
+Pagenation
+========================================================================== */
+.p-pagenation__container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4vh;
+}
+
+.p-pagenation__list-item {
+  font-size: 2.5rem;
+  padding: 0 1vw;
+}
+
+.p-pagenation__list-item.active {
+  font-size: 3rem;
+}
+
+/* ==========================================================================
+Panel
+========================================================================== */
+.p-panel {
+  background: rgba(0, 141, 203, 0.1);
+  border-radius: 20px;
+  margin-bottom: 3vh;
+  overflow: hidden;
+  padding: 20px;
+  width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  .p-panel {
+    width: 48%;
+  }
+}
+
+.p-panel-area {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 980px) {
+  .p-panel-area {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.p-panel-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 5vh auto;
+}
+
+.p-panel__head, .p-panel__head--sm {
+  align-items: center;
+  border-radius: 20px;
+  display: flex;
+  max-height: 50vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+.p-panel__head--sm {
+  max-height: 40vh;
+}
+
+.p-panel__body {
+  display: flex;
+  flex-direction: row;
+  height: 15vh;
+  width: 100%;
+}
+
+.p-panel__left {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 30%;
+}
+
+.p-panel__left--img {
+  height: 72px;
+  width: 72px;
+}
+
+.p-panel__left--name {
+  text-align: center;
+  width: 100%;
+}
+
+.p-panel__right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 70%;
+}
+
+.p-panel__footer {
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: space-around;
+  margin: 2vh auto;
+  width: 90%;
+}
+
+/* ==========================================================================
+ Searh-result
+========================================================================== */
+.p-search-rst {
+  background: rgba(0, 0, 0, 0.12);
+  padding: 1vh 0;
+  text-align: center;
+}
+
+/* ==========================================================================
+ Slide-msg
+========================================================================== */
+.p-slide-msg {
+  background-color: rgba(106, 210, 13, 0.6);
+  text-align: center;
+}
+
+/* ==========================================================================
+Text
+========================================================================== */
+.p-text-link {
+  font-size: 1.5rem;
+}
+
+.p-text-link:hover {
+  text-decoration: underline;
+}
+
+.p-text-link--pass-reminder {
+  font-size: 1.5rem;
+  margin-top: 1vh;
+  text-align: right;
+}
+
+.p-text-link--pass-reminder:hover {
+  text-decoration: underline;
+}
+
+.p-text-link--pass-receive {
+  font-size: 1.5rem;
+  margin: 1vh auto;
+  text-align: center;
+}
+
+.p-text-link--pass-receive:hover {
+  text-decoration: underline;
+}
+
+.p-text-link--counter {
+  text-align: right;
+}
+
+/* ==========================================================================
+Theme color
+========================================================================== */
+.p-bg-main-color {
+  background-color: #fcfdfe;
+}
+
+.p-bg-sub-color {
+  background-color: rgba(0, 141, 203, 0.7);
+}
+
+.p-border--sub-theme {
+  border-color: rgba(0, 141, 203, 0.7);
+}
+
+/* -----------------------------------------------------------------
+ Utility
+----------------------------------------------------------------- */
+/* ==========================================================================
+ background-color
+========================================================================== */
+/* ==========================================================================
+ border
+========================================================================== */
+.u-br-4 {
+  border-radius: 4px;
+}
+
+.u-br-8 {
+  border-radius: 8px;
+}
+
+.u-br-12 {
+  border-radius: 12px;
+}
+
+.u-br-16 {
+  border-radius: 16px;
+}
+
+/* border-none */
+.u-br-0 {
+  border: none;
+}
+
+.u-br-t-0 {
+  border-top: none;
+}
+
+.u-br-r-0 {
+  border-right: none;
+}
+
+.u-br-b-0 {
+  border-bottom: none;
+}
+
+.u-br-l-0 {
+  border-left: none;
+}
+
+/* ==========================================================================
+ clearfix
+========================================================================== */
+.u-cf {
+  min-height: 1%;
+}
+
+.u-cf:after {
+  clear: both;
+  content: ".";
+  height: 0;
+  visibility: hidden;
+}
+
+/* ==========================================================================
+ color
+========================================================================== */
+.u-color-red {
+  background-color: rgba(215, 65, 47, 0.8) !important;
+}
+
+.u-color-green {
+  background-color: rgba(254, 122, 71, 0.05) !important;
+}
+
+/* ==========================================================================
+ cursor
+========================================================================== */
+.u-cs-pointer {
+  cursor: pointer !important;
+}
+
+.u-cs-default {
+  cursor: default !important;
+}
+
+/* ==========================================================================
+ display
+========================================================================== */
+.u-disp--flex {
+  display: flex;
+}
+
+.u-disp--flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-disp--contents {
+  display: contents;
+}
+
+/* ==========================================================================
+ FlexBox
+========================================================================== */
+.u-align-item--center, .u-flex--center {
+  align-items: center;
+}
+
+.u-align-self--center {
+  align-self: center;
+}
+
+.u-justify--center, .u-flex--center {
+  justify-content: center;
+}
+
+.u-flex--center {
+  display: flex;
+}
+
+/* ==========================================================================
+ float
+========================================================================== */
+.u-fl-l {
+  float: left !important;
+}
+
+.u-fl-r {
+  float: right !important;
+}
+
+.u-fl-n {
+  float: none !important;
+}
+
+.u-fl-r-sp {
+  float: right !important;
+}
+
+.u-fl-n-sp {
+  float: none !important;
+}
+
+/* ==========================================================================
+ font-size
+========================================================================== */
+.u-font-size--1h {
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+ font-weight
+========================================================================== */
+/* ==========================================================================
+ height
+========================================================================== */
+/* ==========================================================================
+ letter-spacing
+========================================================================== */
+.u-ls-1 {
+  letter-spacing: -.1em !important;
+}
+
+/* ==========================================================================
+ line-height
+========================================================================== */
+.u-line-height-1h {
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+ margin
+========================================================================== */
+.u-margin-auto {
+  margin: 0 auto;
+}
+
+.u-margin-lr-2l {
+  margin: 0 2vh;
+}
+
+.u-margin-tb-2l {
+  margin: 2vh 0;
+}
+
+.u-margin-t-2l {
+  margin-top: 2vh;
+}
+
+.u-margin-b-2l {
+  margin-bottom: 2vh;
+}
+
+.u-margin-l-2l {
+  margin-left: 2vh;
+}
+
+.u-margin-r-2l {
+  margin-right: 2vh;
+}
+
+/* ==========================================================================
+ padding
+========================================================================== */
+.u-padding-r-2vw {
+  padding-right: 2vw;
+}
+
+/* ==========================================================================
+ position
+========================================================================== */
+.u-pos-a {
+  position: absolute !important;
+}
+
+.u-pos-r {
+  position: relative !important;
+}
+
+.u-pos-s {
+  position: static !important;
+}
+
+/* ==========================================================================
+ text-align
+========================================================================== */
+.u-ta-l {
+  text-align: left !important;
+}
+
+.u-text-al--center {
+  text-align: center !important;
+}
+
+.u-ta-r {
+  text-align: right !important;
+}
+
+/* ==========================================================================
+ text-decoration
+========================================================================== */
+.u-text-dec-u {
+  text-decoration: underline !important;
+}
+
+.u-td-n {
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+ text-indent
+========================================================================== */
+.u-tx-inside0 {
+  padding-left: 0 !important;
+  text-indent: 0 !important;
+}
+
+.u-text-al--right {
+  text-align: right;
+}
+
+.u-text-al--center {
+  text-align: center;
+}
+
+/* ==========================================================================
+ vertical-align
+========================================================================== */
+.u-va-t {
+  vertical-align: top !important;
+}
+
+.u-va-m {
+  vertical-align: middle !important;
+}
+
+.u-va-b {
+  vertical-align: bottom !important;
+}
+
+.u-va-bl {
+  vertical-align: baseline !important;
+}
+
+/* ==========================================================================
+ width
+========================================================================== */
+.u-w-auto {
+  width: auto !important;
+}
+
+.u-w-full {
+  width: 100% !important;
+}
+
+.u-w-threeQuarter {
+  width: 75% !important;
+}
+
+.u-w-half {
+  width: 50% !important;
+}
+
+.u-w-quarter {
+  width: 25% !important;
+}
+
+/* ==========================================================================
+ State
+========================================================================== */
+.is-hide {
+  display: none;
+}
+
+.is-error {
+  background-color: rgba(215, 65, 47, 0.6);
+}
+
+.is-seccess {
+  background-color: rgba(106, 210, 13, 0.6);
+}

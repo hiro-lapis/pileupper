@@ -1,0 +1,94 @@
+@charset "utf-8";
+// ====================================
+// 共通で使う変数を設定
+// ====================================
+$site-width: 980px;
+
+//本プロジェクト用ベース変数
+//$font-type
+$font-type_default: 'Kosugi Maru', sans-serif;//defined  in base.scss
+//color
+$color_main: #fcfdfe;
+$color_sub : rgba(0, 141, 203, 0.7);
+
+$color_sub_accent: rgba($color_sub, 1);
+$color_sub_light: rgba($color_sub, .5);
+$color_sub_light2: rgba($color_sub, .4);
+$color_sub_light3: rgba($color_sub, .3);
+$color_sub_light4: rgba($color_sub, .2);
+$color_sub_light5: rgba($color_sub, .1);
+
+
+$color_warning: rgba(215, 65, 47, 0.8);
+$bg-input_light: rgba(254, 122, 71, .05);
+
+$bg-slide-msg_suc: rgba(106, 210, 13, 0.6);
+$bg-slide-msg_fail: rgba(215, 65, 47, 0.6);
+
+
+//color
+$color_black1: rgba(0,0,0,0.87);
+$color_black2: rgba(0,0,0,0.54);
+$color_black3: rgba(0,0,0,0.26);
+$color_black4: rgba(0,0,0,0.12);
+
+$color_white1: rgba(255,255,255,1.00);
+$color_white2: rgba(255,255,255,0.70);
+$color_white3: rgba(255,255,255,0.30);
+$color_white4: rgba(255,255,255,0.12);
+
+$color_main_light: #e8d3ae;
+$color_accent: #899878;
+$color_accent_light: #d7e0ce;
+$color_pale-white: #fcfdfe;
+$color_orange: rgb(254, 122, 71);
+
+
+$err: #e53935;
+$withdraw: #a0a0a0;
+$strong: #ff6633;
+$blue: #0277bd;
+
+//font
+
+  //$font-size
+  $font-size_s: 1.2rem;
+  $font-size_m: 1.4rem;
+  $font-size_default: 1.6rem;//defined  in base.scss
+  $font-size_l: 1.8rem;
+  $font-size_2l: 2rem;
+  $font-size_3l: 3rem;
+  $font-size_4l: 4rem;
+
+  // font-color
+  $font-color_default: rgba(0,0,0,0.54);
+  $font-color_notice: #e37b89;
+
+  //sp-space
+  $vw-space_1l: 1vw;
+  $vw-space_2l: 2vw;
+  $vw-space_3l: 3vw;
+  $vw-space_4l: 4vw;
+  $vw-space_5l: 5vw;
+
+  $vh-space_1l: 1vh;
+  $vh-space_2l: 2vh;
+  $vh-space_3l: 3vh;
+  $vh-space_4l: 4vh;
+  $vh-space_5l: 5vh;
+  $vh-space_10l: 5vh;
+
+
+
+  //space-size
+  $space_s: 5px;
+  $space_m: 10px;
+  $space_l: 15px;
+  $space_2l: 20px;
+  $space_3l: 30px;
+  $space_4l: 40px;
+  $space_5l: 50px;
+  $space_6l: 60px;
+  $space_7l: 70px;
+  $space_8l: 80px;
+  $space_9l: 90px;

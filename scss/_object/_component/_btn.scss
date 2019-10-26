@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* ==========================================================================
+Button (width/height、font-size/color、shadow)
+========================================================================== */
+//*カラー、ホバーアクションはprojectで管理
+.c-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-style: none;
+    border-radius: 20px;
+    color:$color_white1;
+    pointer: cursor;
+    box-shadow: 0 3px 3px rgb(139, 152, 162);
+    transition: .3s;
+    &:hover{
+        transform: translateY(-3px);
+        transition: .3s;
+        box-shadow: 0 5px 5px 0 #8b98a2;
+    }
+    &--sm{
+        @extend .c-btn;
+        width: 50px;
+        height: 25px;
+    }
+    &--md{
+        @extend .c-btn;
+        width: 100px;
+        height: 50px;
+    }
+    &--large{
+        @extend .c-btn;
+        width: 200px;
+        height: 50px;
+    }
+    &--wide{
+        @extend .c-btn;
+        padding: 10px;
+        width: 100%;
+        font-size: 2rem;
+        @include pc(){
+            width: 65%;
+        }
+    }
+    &--circle{
+        border-radius: 50%;
+    }
+
+    &--center{
+        margin: 0 auto;
+    }
+}

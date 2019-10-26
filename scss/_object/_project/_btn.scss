@@ -1,0 +1,58 @@
+@charset "utf-8";
+/* ==========================================================================
+Button (background-color,hover-animetion)*サイズ・形状はcomponentで管理
+========================================================================== */
+.p-btn{
+    &--msg,
+    &--submit{
+        background-color: #4caf50;
+    }
+
+    &--prof-edit,
+    &--search-start{
+        background-color: $blue;
+    }
+
+    &--withdraw{
+        background-color: $withdraw;
+    }
+
+
+    &--search{
+        position: fixed;
+        right: 0%;
+        bottom: 200px;
+        padding: 15px;
+        background: $color_black4;
+        @include pc(){
+            right: 6%;
+        }
+    }
+
+
+    &--search,
+    &--message{
+        // transition: all .5s;
+        animation: favMoveAnimation 1s;
+        &.is-active:hover{
+            // transition: all .5s;
+             animation: favMoveAnimation 1s;
+        }
+    }
+
+
+
+
+
+
+    &--withdraw__wrap{
+        display: flex;
+        margin: 0 auto;
+        justify-content: flex-end;
+        width: 65vw;
+        @include pc(){
+        margin: 5vh auto;
+        width: 48%;
+        }
+    }
+}

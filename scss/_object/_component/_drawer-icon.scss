@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* ==========================================================================
+drawer-icon
+========================================================================== */
+    .c-drawer {
+      position: relative;
+      // inputのcheckboxは非表示
+      &__checkbox{
+        display: none;
+      }
+      // ハンバーガーアイコン大枠
+      &__icon{
+        cursor: pointer;
+        display: block;
+        width: 66px;
+        height: 70px;
+        position: fixed;
+        right: 0;
+        // ハンバーガーアイコン形成
+        &-parts,
+        &-parts:before,
+        &-parts:after{
+          background-color: $color_black1;
+          display: block;
+          width: 30px;
+          height: 3px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          margin: auto;
+        }
+        &-parts:before,//ライン作るため空文字
+        &-parts:after{
+          content: " ";
+        }
+        &-parts:before{//配置
+          top: 16px
+        }
+        &-parts:after{
+          top: -16px
+        }
+      }
+
+      // ドロワーメニュー開いた時のメインエリアを暗く
+      &__overlay{
+        background: #000;
+        opacity: 0;
+        pointer-events: none; //ポインタの動作全部無効化
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+      }
+
+      // メニュー
+      &__menu{
+        background: #ffffff;
+        color: #000;
+        max-width: 100%;
+        width: 320px;
+        height: 100vh;
+        overflow-y: auto; //スクロール
+        -webkit-overflow-scrolling: touch; //スクロール（SP）
+        position: fixed;
+        top: 0;
+        right: -320px;
+      }
+      // z-indexの指定（1がメインエリア）
+      &__icon{
+        z-index: 4;
+      }
+      &__menu{
+        z-index: 3;
+      }
+      &__overlay{
+        z-index: 2;
+      }
+
+      // チェックが入ったら（アイコンクリックしたら）
+      &__checkbox:checked ~ {
+        // ハンバーガーアイコン
+        .c-drawer__icon{
+          .c-drawer__icon-parts{
+            background: transparent;
+          }
+          .c-drawer__icon-parts:before{
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: 0;
+          }
+          .c-drawer__icon-parts:after{
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: 0;
+          }
+        }
+        // メインエリアを暗くする
+        .c-drawer__overlay {
+          opacity: 0.3;
+          pointer-events: auto; //ポインタの動作デフォルトに戻す
+        }
+        // メニューをだす
+        .c-drawer__menu {
+          right: 0;
+        }
+      }
+      // 動きをスムーズに
+      &__icon-parts,
+      &__icon-parts:after,
+      &__icon-parts:before,
+      &__overlay,
+      &__menu{
+        -webkit-transition: all .7s ;
+        transition: all .7s ;
+      }
+    }

@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* ==========================================================================
+Input,Textarea
+========================================================================== */
+.p-input{
+        background: $color_sub_light4;
+        border-style: none;
+        @include pc(){
+        width: 300px;
+        margin: 0 auto;
+        }
+        &--search{
+        @extend .p-input;
+        padding: 1vh 3vw;
+        @include pc(){
+            width: 80%;
+        }
+    }
+}
+
+.p-text-area{
+    padding: 1vh 1.5vw;
+    border-radius: 20px;
+    background: $color_white2;
+    height: 8vh;
+    width: 100%;
+    &--record{
+    @extend .p-text-area;
+    width: 400px;
+    }
+}
