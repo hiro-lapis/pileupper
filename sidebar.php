@@ -31,6 +31,6 @@
         </select>
     </label>
 
-      <button class="c-btn--sm c-btn--center p-btn--search-start" type="submit"><i class="fa fa-search"></i>検索</button>
+      <button class="c-btn--md c-btn--center p-btn--search-submit" type="submit"><i class="fa fa-search"></i>検索</button>
   </form>
 </aside>

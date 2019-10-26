@@ -6,15 +6,27 @@ Button (background-color,hover-animetion)*サイズ・形状はcomponentで管�
     &--msg,
     &--submit{
         background-color: #4caf50;
+        border: solid 1px #4caf50;
+        &:hover{
+            color: #4caf50;
+        }
     }
 
     &--prof-edit,
-    &--search-start{
+    &--search-submit{
         background-color: $blue;
+        border: solid 1px $blue;
+        &:hover{
+            color: $blue;
+        }
     }
 
     &--withdraw{
         background-color: $withdraw;
+        &:hover{
+            color: $withdraw;
+            border: solid 1px $withdraw;
+        }
     }
 
 

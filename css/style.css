@@ -175,7 +175,6 @@ Button (width/height、font-size/color、shadow)
   align-items: center;
   border-radius: 20px;
   border-style: none;
-  box-shadow: 0 3px 3px #8b98a2;
   box-sizing: border-box;
   color: white;
   display: flex;
@@ -185,24 +184,41 @@ Button (width/height、font-size/color、shadow)
 }
 
 .c-btn:hover, .c-btn--sm:hover, .c-btn--md:hover, .c-btn--large:hover, .c-btn--wide:hover {
-  box-shadow: 0 5px 5px 0 #8b98a2;
-  transform: translateY(-3px);
+  background: white;
   transition: .3s;
 }
 
 .c-btn--sm {
-  height: 25px;
+  padding: 15px;
   width: 50px;
 }
 
+@media screen and (min-width: 980px) {
+  .c-btn--sm {
+    padding: 10px;
+  }
+}
+
 .c-btn--md {
-  height: 50px;
+  padding: 15px;
   width: 100px;
 }
 
+@media screen and (min-width: 980px) {
+  .c-btn--md {
+    padding: 10px;
+  }
+}
+
 .c-btn--large {
-  height: 50px;
+  padding: 15px;
   width: 200px;
+}
+
+@media screen and (min-width: 980px) {
+  .c-btn--large {
+    padding: 10px;
+  }
 }
 
 .c-btn--wide {
@@ -696,14 +712,29 @@ Button (background-color,hover-animetion)*サイズ・形状はcomponentで管�
 ========================================================================== */
 .p-btn--msg, .p-btn--submit {
   background-color: #4caf50;
+  border: solid 1px #4caf50;
 }
 
-.p-btn--prof-edit, .p-btn--search-start {
+.p-btn--msg:hover, .p-btn--submit:hover {
+  color: #4caf50;
+}
+
+.p-btn--prof-edit, .p-btn--search-submit {
   background-color: #0277bd;
+  border: solid 1px #0277bd;
+}
+
+.p-btn--prof-edit:hover, .p-btn--search-submit:hover {
+  color: #0277bd;
 }
 
 .p-btn--withdraw {
   background-color: #a0a0a0;
+}
+
+.p-btn--withdraw:hover {
+  border: solid 1px #a0a0a0;
+  color: #a0a0a0;
 }
 
 .p-btn--search {
