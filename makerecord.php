@@ -178,7 +178,7 @@ require('head.php');
                                     <?php if(!empty($err_msg['name'])) echo $err_msg['name']; ?>
                                 </span>
                             </label>
-                            <input type="text" class="c-input p-input" name="name" value="<?php echo getFormData('name'); ?>">
+                            <input type="text" class="c-input p-input" name="name" value="<?php echo getFormData('name'); ?>" required>
 
                             <!-- カテゴリ -->
                             <label class="c-label" for="category_id">見どころポイント

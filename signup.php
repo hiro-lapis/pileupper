@@ -70,16 +70,16 @@ require('head.php');
           <span class="err__msg"><?php if(!empty($err_msg['common'])) echo $err_msg['common']; ?></span>
         </div>
         <span class="c-msg__err"><?php if(!empty($err_msg['name'])) echo $err_msg['name']; ?></span>
-        <input type="text" class="c-input p-input" name="name" placeholder="ユーザー名" value="<?php if(!empty($POST['name'])) echo $_POST['name']; ?>">
+        <input type="text" class="c-input p-input" name="name" placeholder="ユーザー名" value="<?php if(!empty($POST['name'])) echo $_POST['name']; ?>" required>
 
         <span class="c-msg__err"><?php if(!empty($err_msg['email'])) echo $err_msg['email']; ?></span>
-        <input type="text" class="c-input p-input" name="email" placeholder="Email" value="<?php if(!empty($POST['email'])) echo $_POST['email']; ?>">
+        <input type="email" class="c-input p-input" name="email" placeholder="Email" value="<?php if(!empty($POST['email'])) echo $_POST['email']; ?>" required>
 
         <span class="c-msg__err"><?php if(!empty($err_msg['pass'])) echo $err_msg['pass']; ?></span>
-        <input type="password" class="c-input p-input" name="pass" placeholder="パスワード" value="<?php if(!empty($POST['pass'])) echo $_POST['pass']; ?>">
+        <input type="password" class="c-input p-input" name="pass" placeholder="パスワード" value="<?php if(!empty($POST['pass'])) echo $_POST['pass']; ?>" autocomplete="new-password" required>
 
         <span class="c-msg__err"><?php if(!empty($err_msg['pass_re'])) echo $err_msg['pass_re']; ?></span>
-        <input type="password" class="c-input p-input" name="pass_re" placeholder="パスワード（再入力）" value="<?php if(!empty($POST['pass_re'])) echo $_POST['pass_re']; ?>">
+        <input type="password" class="c-input p-input" name="pass_re" placeholder="パスワード（再入力）" value="<?php if(!empty($POST['pass_re'])) echo $_POST['pass_re']; ?>" required>
 
         <input type="submit" class="c-btn--wide c-btn--center p-btn--submit" name="" value="アカウント作成">
       </form>

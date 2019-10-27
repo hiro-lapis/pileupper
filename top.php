@@ -77,7 +77,7 @@ require('head.php');
                 <div class="p-form--login__body">
 
                     <span class="c-msg__err"><?php if(!empty($err_msg['email'])) echo $err_msg['email']; ?></span>
-                    <input type="text" class="c-input p-input" name="email" placeholder="Eメール" value="<?php if(!empty($POST['eamil'])) echo $_POST['email']; ?>" required>
+                    <input type="email" class="c-input p-input" name="email" placeholder="Eメール" value="<?php if(!empty($POST['eamil'])) echo $_POST['email']; ?>" required>
                     <span class="c-msg_err"><?php if(!empty($err_msg['pass'])) echo $err_msg['pass']; ?></span>
                         <input type="password" class="c-input p-input" name="pass" placeholder="パスワード(6~20文字)" value="<?php if(!empty($POST['pass'])) echo $_POST['pass']; ?>" required>
 

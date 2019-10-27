@@ -6,6 +6,12 @@ debugLogStart();
 debug('詳細処理開始');
 
 $record_id = (!empty($_GET['t_id'])) ? $_GET['t_id'] : '';
+
+//POST['msg']ならメッセージ処理
+if(!empty($_POST['msg'])){
+    require('msg.php');
+}
+
 $viewData = getToDoOne($record_id);
 $dbMsgData = getMsg($record_id);
 $dbRecordUser = getUser($viewData['user_id']);
@@ -20,10 +26,6 @@ if(empty($viewData)){
 //レコード投稿者のID＝閲覧ユーザーIDならeditフラグ
 $edit_flg = ($viewData['user_id'] === $_SESSION['user_id']) ? true : false;
 
-//POST['msg']ならメッセージ処理
-if(!empty($_POST['msg'])){
-    require('msg.php');
-}
 debug('---画面表示処理終了---')
 ?>
 

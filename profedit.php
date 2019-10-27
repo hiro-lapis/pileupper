@@ -165,7 +165,7 @@ require('head.php');
                 <input type="text" class="c-input p-input" name="name" placeholder="ユーザー名" value="<?php echo getFormData('name'); ?>">
 
                 <span class="p-msg__err"><?php if(!empty($err_msg['email'])) echo $err_msg['email']; ?></span>
-                <input type="text" class="c-input p-input" name="email" placeholder="Email" value="<?php echo getFormData('email'); ?>">
+                <input type="email" class="c-input p-input" name="email" placeholder="Email" value="<?php echo getFormData('email'); ?>">
 
 
                 <!-- セキュリティの観点からpassはプリセットしない。-->
