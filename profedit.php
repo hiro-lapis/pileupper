@@ -67,8 +67,7 @@ if(!empty($_POST)){
         $pass_new_re = $_POST['pass_new_re'];
         //passバリデーション
         validHalf($pass_new, 'pass_new');
-        validMaxLen($pass_new, 'pass_new');
-        validMinLen($pass_new, 'pass_new');
+        validLength($pass_new, 'pass_new');
         validMatch($pass_new, $pass_new_re, 'pass_new_re');
         if($pass_new === $pass_old) $err_msg['pass_new'] = MSG13;
 

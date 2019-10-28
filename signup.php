@@ -20,11 +20,9 @@ if(!empty($_POST)){
     validEmailDup($email);
     //password
     validHalf($pass, 'pass');
-    validMaxLen($pass, 'pass');
-    validMinLen($pass, 'pass');
+    validLength($pass, 'pass');
     //再入力
-    validMaxLen($pass_re, 'pass_re');
-    validMinLen($pass_re, 'pass_re');
+    validLength($pass_re, 'pass_re');
     validMatch($pass, $pass_re, 'pass_re');
 
     if(empty($err_msg)){

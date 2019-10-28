@@ -1,0 +1,82 @@
+1.公式リファレンス https://phpunit.readthedocs.io/ja/latest/index.html
+
+
+2.使用方法
+
+//テストコマンドは phpunit test.php
+//phpunit~ 以降はtest.phpをターミナルにドラッグ＆ドロップでOK
+
+
+
+3.テストコードの書き方
+
+/まず、テストしたい関数があるファイルを読み込む
+require_once('sample.php');
+
+
+//DB接続する関数のテストをする時は,localhostのポート番号を入力するよう書き換える
+function dbConnect(){
+
+  $dsn = 'mysql:dbname=pileupper;host=localhost:8888;charset=utf8';//テスト設定
+  $dsn = 'mysql:dbname=pileupper;host=localhost;charset=utf8';//ローカル設定
+
+
+///phpunitからテストクラスを読み込む
+
+  class SampleTest extends PHPUnit\Framework\TestCase { ~
+
+////phpunitに実行させたいテスト、テスト対象となる関数、関数のテスト内容、想定される結果内容を入力する
+
+    public function test_add() {
+      $this->assertEquals(10, add(4,6 ));
+    }
+    public function test_sub() {
+      $this->assertEquals(1, sub(7, 6));
+    }
+  }
+
+*テスト関数の名前は自由だが、「test + テスト対象の関数名 + 想定する結果(true,false)」の命名が分かりやすい
+
+
+
+
+
+4.テスト実行後の評価関数
+
+$this->assert~ の部分がテスト結果を評価する関数
+想定する結果に合わせて使用する
+
+assertNull()
+想定結果がnullである
+
+assertEquals()
+想定結果に値があり、かつ引数と同値である
+「Equals」という複数形である。間違えないように注意！
+
+assertTrue(),assertFalse()
+想定結果がbooleanであり、かつtrue(false)である
+
+
+5.注意点
+
+/テスト対象の関数で使用するグローバル変数が被ると、正常なテスト結果が得られない
+
+例えば、ある関数の初回テストで$err_msg['name']というグローバル変数にエラーメッセージが入った場合、
+その後、同じ関数のテストでエラーメッセージが入らないテストを実行しても、エラーメッセージは空にならない
+
+また、falseとなる境界値テストを複数回行った場合も、１回目で$err_msgに値が入っているので、2回目以降のテストで
+
+
+対処方法は以下の3つ
+最初はAで対応しつつ、リファクタリングでBへ以降するよう対処する
+
+A.テストごとに$err_magに入れる引数($keyの部分)を変える
+
+キーを変えれば参照する変数がテストケースごとに変わる。
+ただ、実際の動作環境から解離してしまうリスクがある。
+
+
+B.テスト対象の関数をjsに以降できないか検討。もしくはtrue,falseそれぞれでグローバル変数の中身が変わるようにコードを書き換える
+
+jsでバリデーションを行う方がユーザビリティも向上する。
+

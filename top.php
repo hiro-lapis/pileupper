@@ -12,8 +12,7 @@ if(!empty($_POST)){
   //pass_wordバリデーション
   validRequired($pass, 'pass');
   validHalf($pass, 'pass');
-  validMaxLen($pass, 'pass', 20);
-  validMinLen($pass, 'pass');
+  validLength($pass, 'pass');
 
   if(empty($err_msg)){
     debug('バリデーションクリア');

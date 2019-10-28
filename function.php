@@ -7,15 +7,15 @@ ini_set('error_log', 'php.log');
 //定数（エラー・サクセス)メッセージの定義
 define('MSG01', '入力必須です');//validRequired
 define('MSG02', 'Eメールアドレスを入力してください');//validEmail
-define('MSG03', 'パスワードと再入力が一致しません');//validMatch
+define('MSG03', 'パスワードは6~20字の間で入力してください');//validMinLen
 define('MSG04', '半角英数字で入力してください');//validNumber
-define('MSG05', 'パスワードは６文字以上で設定してください');//validMinLen
-define('MSG06', '最大文字数は140字までです');//validMaxLen
+define('MSG05', 'パスワードと再入力が一致しません');//validMatch
+define('MSG06a', '最大文字数は');
+define('MSG06b', '字までです');
 define('MSG07', 'エラーが発生しました。しばらく経ってからやり直してください。');
 define('MSG08', 'そのEMAILはすでに登録されています。');
 //投稿フォームのMSG
 define('MSG09', 'アドレスかパスワードが間違っています。');
-define('MSG10', 'メッセージは100文字以内にしてください');
 define('MSG11', 'そのユーザー名はすでに登録されています。');
 define('MSG12', '古いパスワードが登録されたパスワードと一致しません。');
 define('MSG13', '新しいパスワードが古い方と同じです。');
@@ -80,72 +80,70 @@ ini_set('session.cookie_lifetime ', 60*60*24*30);
 session_start();
 //現在のセッションIDを新しく生成したものと置き換える（なりすましのセキュリティ対策）
 session_regenerate_id();
+
+
 //バリデーションメソッド
-//ユーザー登録
-//バリデーション①（未入力）チェック
+
+//未入力チェック
 function validRequired($str, $key){
   if(empty($str)){
     global $err_msg;
     $err_msg[$key] = MSG01;
   }
 }
-//バリデーション②EMAIL形式チェック
+//EMAIL形式チェック
 function validEmail($str,$key){
   if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $str)){
     global $err_msg;
     $err_msg[$key] = MSG02;
   }
 }
-function validLength($str, $key, $len = 8){
-  if(strlen($str) !== $len){
+//文字数チェック(password)
+function validLength($str, $key, $minLen = 6, $maxLen = 20){
+  if(strlen($str) < $minLen || strlen($str) > $maxLen){
     global $err_msg;
-    $err_msg[$key] = $len.MSG14;
+    $err_msg[$key] = MSG03;
   }
 }
-//バリデーション③英数字最大文字数チェック(strlen)
-//数字のみ入力箇所（email,pass)
+
+//英数字最大文字数チェック(strlen)
+//emailで使用
 function validMaxLen($str,$key,$max = 255){
   if(strlen($str) > $max){
     global $err_msg;
-    $err_msg[$key] = MSG06;
+    $err_msg[$key] = MSG06a.$max.MSG06b;
   }
 }
-//バリデーション③文章最大文字数チェック(mb_strlen)
-//ひらがな等入力箇所（name,msg,)
+//文字列最大文字数チェック(mb_strlen)
+//ひらがな等入力箇所（name,msg)
 function validMaxMbLen($str,$key,$max = 140){
   if(mb_strlen($str) > $max){
     global $err_msg;
-    $err_msg[$key] = '最大文字数は'.$max.'字までです';
+    $err_msg[$key] = MSG06a.$max.MSG06b;
   }
 }
-//バリデーション④最小文字数チェック
-function validMinLen($str,$key,$min = 6){
-  if(strlen($str) < $min){
-    global $err_msg;
-    $err_msg[$key] = MSG05;
-  }
-}
-//バリデーション⑤半角英数字チェック
+//半角英数字チェック
 function validHalf($str, $key){
   if(!preg_match("/^[a-zA-Z0-9]+$/",$str)){
     global $err_msg;
     $err_msg[$key] = MSG04;
   }
 }
-//バリデーション⑥パスワード再入力のチェック
+//パスワード再入力チェック
 function validMatch($str1,$str2,$key){
   if( $str1 !== $str2){
     global $err_msg;
-    $err_msg[$key] = MSG03;
+    $err_msg[$key] = MSG05;
   }
 }
-//バリデーション⑦カテゴリ入力のチェック
+//カテゴリ入力のチェック
 function validSelect($str, $key){
   if(!preg_match("/^[0-9]+$/", $str) || $str === 0){
     global $err_msg;
     $err_msg[$key] = MSG16;
   }
 }
+
 //エラーメッセージ表示
 //エラーメッセージがある場合、引数を戻り値でエラーメッセージのキーとして返す
 function getErrMsg($key){
@@ -154,18 +152,16 @@ function getErrMsg($key){
     return $err_msg[$key];
   }
 }
-//バリデーション⑧email重複登録のチェック
+//email重複登録のチェック
 function validEmailDup($email){
   global $err_msg;
   try {
 
     $dbh = dbConnect();
-    //入力されたemailの値を持ち、アカウントが有効なものを検索。
     $sql = 'SELECT count(*) FROM users WHERE email = :email AND delete_flg = 0';
     $data = array(':email' => $email);
-
-    //クエリ実行
     $stmt = queryPost($dbh, $sql, $data);
+
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     //配列の先頭を取り出す関数で、クエリ結果の頭を取得
     if(!empty(array_shift($result))){
@@ -181,7 +177,11 @@ function validEmailDup($email){
 //接続関連
 //DBへの接続準備
 function dbConnect(){
-  $dsn = 'mysql:dbname=pileupper;host=localhost;charset=utf8';
+  // $dsn = 'mysql:dbname=pileupper;host=localhost;charset=utf8';
+
+  //テスト用
+  $dsn = 'mysql:dbname=pileupper;host=localhost=8889;charset=utf8';
+
   $user = 'root';
   $password = 'root';
   $options =array(
@@ -225,7 +225,7 @@ function getUser($u_id){
 
     if($stmt){
       return $stmt->fetch(PDO::FETCH_ASSOC);
-    }else {
+    } else {
       return false;
     }
 
@@ -233,12 +233,13 @@ function getUser($u_id){
     error_log('エラー発生:' . $e->getMessage());
   }
 }
-//todoリスト情報取得関数
+
+//recordリスト情報取得関数
 function getToDo($u_id, $record_id){
-  debug('todoリスト情報を取得します。');
+  debug('リスト情報を取得します。');
   debug('ユーザーID:'.$u_id);
   debug('todoID'.$record_id);
-  //例外処理
+
   try {
     $dbh = dbConnect();
     $sql = 'SELECT * FROM todo WHERE user_id = :u_id AND id = :t_id AND delete_flg = 0';
@@ -247,7 +248,6 @@ function getToDo($u_id, $record_id){
     $stmt = queryPost($dbh, $sql, $data);
 
     if($stmt){
-      //クエリ結果のデータを一つだけ取得
       return $stmt -> fetch(PDO::FETCH_ASSOC);
     } else {
       return false;
@@ -257,9 +257,10 @@ function getToDo($u_id, $record_id){
     error_log('エラー発生:' . $e-> getMessage());
   }
 }
+
 //カテゴリ取得関数
 function getCategory(){
-  debug('カテゴリ 情報を取得します。');
+  debug('カテゴリ情報を取得します。');
 
   try {
     $dbh = dbConnect();
