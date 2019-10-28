@@ -77,10 +77,10 @@ require('head.php');
 
                     <span class="c-msg__err"><?php if(!empty($err_msg['email'])) echo $err_msg['email']; ?></span>
                     <input type="email" class="c-input p-input" name="email" placeholder="Eメール" value="<?php if(!empty($POST['eamil'])) echo $_POST['email']; ?>" required>
-                    <span class="c-msg_err"><?php if(!empty($err_msg['pass'])) echo $err_msg['pass']; ?></span>
+                    <span class="c-msg__err"><?php if(!empty($err_msg['pass'])) echo $err_msg['pass']; ?></span>
                         <input type="password" class="c-input p-input" name="pass" placeholder="パスワード(6~20文字)" value="<?php if(!empty($POST['pass'])) echo $_POST['pass']; ?>" required>
 
-                    <span class="c-msg_err"><?php if(!empty($err_msg['common'])) echo $err_msg['common']; ?></span>
+                    <span class="c-msg__err"><?php if(!empty($err_msg['common'])) echo $err_msg['common']; ?></span>
                 </div>
                 <div class="p-form--login__bottom">
                     <input type="submit"  class="c-btn--large p-btn--submit" value="ログイン">

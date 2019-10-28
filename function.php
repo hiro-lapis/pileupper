@@ -48,8 +48,10 @@ define('MUS10', '翼を授けるヒラメ筋');
 //エラーメッセージの箱となる変数を用意
 $err_msg = array();
 
-//================
-//デバッグログのメソッド
+//----------------------------------
+//デバッグログ
+//----------------------------------
+
 $debug_flg = true;
 function debug($str){
   global $debug_flg;
@@ -81,8 +83,9 @@ session_start();
 //現在のセッションIDを新しく生成したものと置き換える（なりすましのセキュリティ対策）
 session_regenerate_id();
 
-
+//----------------------------------
 //バリデーションメソッド
+//----------------------------------
 
 //未入力チェック
 function validRequired($str, $key){
@@ -173,14 +176,16 @@ function validEmailDup($email){
   }
 }
 
+//----------------------------------
+//DB接続
+//----------------------------------
 
-//接続関連
 //DBへの接続準備
 function dbConnect(){
-  // $dsn = 'mysql:dbname=pileupper;host=localhost;charset=utf8';
+  $dsn = 'mysql:dbname=pileupper;host=localhost;charset=utf8';
 
   //テスト用
-  $dsn = 'mysql:dbname=pileupper;host=localhost=8889;charset=utf8';
+  // $dsn = 'mysql:dbname=pileupper;host=localhost=8889;charset=utf8';
 
   $user = 'root';
   $password = 'root';
@@ -211,7 +216,7 @@ function queryPost($dbh, $sql, $data){
   return $stmt;
 }
 
-//ユーザー情報取得関数
+//ユーザー情報取得
 function getUser($u_id){
   debug('ユーザー情報を取得します。');
 
@@ -234,7 +239,12 @@ function getUser($u_id){
   }
 }
 
-//recordリスト情報取得関数
+
+//----------------------------------
+//DBデータ処理
+//----------------------------------
+
+//recordリスト情報取得
 function getToDo($u_id, $record_id){
   debug('リスト情報を取得します。');
   debug('ユーザーID:'.$u_id);
@@ -258,7 +268,7 @@ function getToDo($u_id, $record_id){
   }
 }
 
-//カテゴリ取得関数
+//カテゴリ取得
 function getCategory(){
   debug('カテゴリ情報を取得します。');
 
@@ -278,7 +288,8 @@ function getCategory(){
     error_log('エラー発生:' . $e->getMessage());
   }
 }
-//todo詳細情報取得関数
+
+//record詳細情報取得
 function getToDoOne($record_id){
   debug('詳細なtodo情報を取得します。');
   debug('TodoのID:'.$record_id);
@@ -350,7 +361,7 @@ function isNice($u_id, $record_id){
     error_log('エラー発生：'.$e -> getMessage());
   }
 }
-//お気に入りデータ取得関数①
+//お気に入りデータ取得関数
 function getMyNice($u_id){
   debug('ユーザーのID'.$u_id);
   try {
@@ -363,11 +374,11 @@ function getMyNice($u_id){
     error_log('エラー発生：'.$e -> getMessage());
   }
 }
+
 //todoリスト取得関数
 function getToDoList($currentMinNum = 1, $category, $sort, $span =10){
   debug('Todo情報を取得します');
   try {
-    //DBへ接続
     $dbh =  dbConnect();
     //件数用のSQL作成
     $sql =  'SELECT id FROM todo';
@@ -382,11 +393,10 @@ function getToDoList($currentMinNum = 1, $category, $sort, $span =10){
         $sql .=' ORDER BY create_date DESC';
         debug('古いレコード順に取得します。');
         break;
-      }//検索ページでは１、２それぞれのクエリ文に対応したセレクトボックスを作成する
+      }
     }
 
     $data = array();
-    //クエリ実行
     $stmt = queryPost($dbh, $sql, $data);
     $rst['total'] = $stmt->rowCount();//総レコード数
     $rst['total_page'] = ceil($rst['total']/$span);//レコード数をspanで割るとページ数になる
@@ -423,9 +433,7 @@ function getToDoList($currentMinNum = 1, $category, $sort, $span =10){
     $stmt =  queryPost($dbh, $sql, $data);
 
     if($stmt){
-      //クエリ結果のデータを全レコードを格納
       $rst['data'] = $stmt->fetchAll();
-      //ここでdataというキーが当たっているから、mypageのdbToDoDataにもdataというキーが付いている。
       debug('このページで表示する情報一覧:'.print_r($rst, true));
       return $rst;
     } else {
@@ -436,7 +444,7 @@ function getToDoList($currentMinNum = 1, $category, $sort, $span =10){
 
   }
 }
-//お気に入りデータ取得関数①
+//お気に入りデータ取得関数
 function getNiceNum($record_id){
   debug('レコードID:'.$record_id);
   try {
@@ -453,7 +461,7 @@ function getNiceNum($record_id){
     error_log('エラー発生：'.$e -> getMessage());
   }
 }
-//ユーザーのレコード取得関数
+//ユーザーレコード取得関数
 function getMy_Record($u_id){
   debug('レコードを取得するユーザーのID'.$u_id);
   try {
@@ -471,6 +479,7 @@ function getMy_Record($u_id){
     error_log('エラー発生：'.$e->getMessage);
   }
 }
+
 //ページネーション関数
 //$currentPageNum 現在のページNo
 function pagination( $currentPageNum, $totalPageNum, $link = '', $pageColNum = 5){
@@ -525,9 +534,10 @@ function pagination( $currentPageNum, $totalPageNum, $link = '', $pageColNum = 5
   echo '</ul>';
   echo '</div>';
 }
+
 //詳細から一覧へ戻る時のURL調整関数
 function appendGetParam($arr_del_key = array()){
-  //引数に指定した値を取り除いてくれる
+
   if(!empty($_GET)){
     $str = '?';
     foreach ($_GET as $key => $val){
@@ -541,9 +551,10 @@ function appendGetParam($arr_del_key = array()){
 }
 
 //----------------------------------
-//画像関連関数
+//画像処理関数
 //----------------------------------
-//画像取得関数
+
+//画像取得
 function showImg($path){
   if(empty($path)){
     //画像投稿がない時にサンプル画像を表示する
@@ -552,50 +563,42 @@ function showImg($path){
     return $path;
   }
 }
-//画像アップロード関数
+
+//画像アップロード
 function uploadImg($file, $key){
   debug('画像アップロード処理開始');
   debug('FILE情報:'.print_r($file, true));
 
   if(isset($file['error']) && is_int($file['error'])){
+
     try {
-      //バリデーション
-      //$file['error']の値を確認。配列内には「UPLOAD＿ERR＿OK」などの定数が入っている。
-      //定数はphpファイルでアップロード時に自動的に定義される、定数には０や１などの数値が入っている。
+
       switch ($file['error']){
-        case UPLOAD_ERR_OK: //OK
+        case UPLOAD_ERR_OK:
         break;
 
-        case UPLOAD_ERR_NO_FILE://ファイル未選択の場合
+        case UPLOAD_ERR_NO_FILE:
         throw new RuntimeException('ファイルが選択されていません。');
 
-        case UPLOAD_ERR_INI_SIZE://php.ini定義の最大サイズが超過した場合
+        case UPLOAD_ERR_INI_SIZE:
         throw new RuntimeException('ファイルサイズが大き過ぎます。');
-        case UPLOAD_ERR_FORM_SIZE://フォーム定義の最大サイズを超過した場合
+        case UPLOAD_ERR_FORM_SIZE:
         throw new RuntimeException('ファイルサイズが大き過ぎます。');
 
-        default://その他の場合
+        default:
         throw new RuntimeException('その他のエラーが発生しました。');
       }
-      //$file['mime']の値はブラウザ側で偽装可能なので、MIMEタイプを自前てチェックする。
-      //exif_imagetype関数は「IMAGETYPE＿GIF」『IMAGETYPE_JPEG」などの定数を返す
-      //先頭に@をつけることでエラーが出た時も処理が止まらないようにする効果がある。
       $type = @exif_imagetype($file['tmp_name']);
-      //in_arrayは第一引数の配列に第二引数の要素があるかを判定する関数
-      if(!in_array($type, [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)){//第３引数にtrueを入れると厳密にチェックしてくれる
+
+      if(!in_array($type, [IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG], true)){
         throw new RuntimeException('画像の形式が未対応です。');
       }
-      //ファイルデータからSHAーハッシュを取ってファイル名を決定し、ファイルを保存する
-      //ハッシュ化しておかないとアップロードされたファイル名そのままで保存、中身の異なる同名のファイルが上がる
-      //可能性がある。DBにパスを保村すると区別がつかなくなるリスク
-      //image_type_to_extension関数はファイルの拡張子を取得するもの
-      //通信時のMIMEの審査にはexif_imagetypeを、ファイルそのものの拡張子の審査にはimage_tyoe_to_extentionを入力する
       $path = 'uploads/'.sha1_file($file['tmp_name']).image_type_to_extension($type);
 
-      if(!move_uploaded_file($file['tmp_name'], $path)){//パスを移動する
+      if(!move_uploaded_file($file['tmp_name'], $path)){//パスを移動
         throw new RuntimeException('ファイル 保存時にエラーが発生しました。');
       }
-      //保存したファイルパスのパーミッション（権限）を変更する
+      //保存したファイルパスのパーミッションを変更
       chmod($path, 0644);
 
       debug('ファイルは正常にアップロードされました。');
@@ -611,9 +614,11 @@ function uploadImg($file, $key){
     }
   }
 }
-///////////////////////////////
+
+//----------------------------------
 //その他
-///////////////////////////////
+//----------------------------------
+
 //サニタイズ
 function sanitize($str){
   return htmlspecialchars($str, ENT_QUOTES);
@@ -637,7 +642,7 @@ function getFormData($str, $flg = false){
         return $method[$str];
 
       } else {
-        //エラーはあるがPOSTがない場合、DB情報を返す。通常は新井えない
+        //エラーはあるがPOSTがない場合、DB情報を返す。通常はありえない
         return $dbFormData[$str];
 
       }
@@ -658,8 +663,8 @@ function getFormData($str, $flg = false){
     }
   }
 }
-//ログイン認証
-//auth.phpと異なりSESSION更新・遷移なし
+
+//ログイン認証(SESSION更新・遷移なし)
 function isLogin(){
   if(!empty($_SESSION['login_date'])){
     debug('ログイン済みユーザーです。');
@@ -679,19 +684,17 @@ function makeRandKey($length = 8){
   $chars ='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   $str = '';
   for ($i = 0; $i < $length; ++$i){
-    //文字列変数[数字]で文字列の一文字を取得できる
-    // . をつけることでくり返し出力する文字列が連結される
-    $str .= $chars[mt_rand(0, 61)];
+   $str .= $chars[mt_rand(0, 61)];
   }
   return $str;
 }
 
-//メールアドレス変更後のメール送信関数
+//変更後のメール送信関数
 function sendMail($from, $to, $subject, $comment){
   if(!empty($to) && !empty($subject) && !empty($comment)){
     //文字化け防止
-    mb_language("Japanese");//現在使っている言語を設定
-    mb_internal_encoding("UTF-8");//PC側でのエンコーディングの設定
+    mb_language("Japanese");
+    mb_internal_encoding("UTF-8");
 
     $result = mb_send_mail($to, $subject, $comment, "From: ".$from);
     //送信結果を表示
